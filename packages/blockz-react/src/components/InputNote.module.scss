@@ -1,0 +1,9 @@
+.inputNote{
+  @apply text-black-300 text-body-4 leading-body-4;
+
+  &State {
+    &Error {
+      @apply text-red;
+    }
+  }
+}

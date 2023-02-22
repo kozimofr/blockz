@@ -1,0 +1,46 @@
+*{
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+html, body, code{
+  @apply font-400 text-black-300 text-body-2 leading-body-2;
+  font-family: theme('fontFamily.DEFAULT');
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+b, strong{
+  @apply text-black font-700;
+}
+
+ul, ol{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.container{
+  @apply px-3 mx-auto w-full;
+  max-width: $containerMaxWidth;
+}
+
+@media screen and (min-width: theme('screens.small')){
+  .container{
+    @apply px-4;
+  }
+}
+
+@media screen and (min-width: theme('screens.medium')){
+  .container{
+    @apply px-5;
+  }
+}

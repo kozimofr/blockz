@@ -1,0 +1,52 @@
+{
+  "name": "@kozimo/blockz-scss",
+  "version": "1.0.0",
+  "description": "SCSS files for building Kozimo UI.",
+  "homepage": "https://github.com/kozimofr/blockz/tree/master/packages/blockz-scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kozimofr/blockz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kozimofr/blockz/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "author": "Kozimo <tech@kozimo.fr>",
+  "license": "Apache-2.0",
+  "keywords": [
+    "kozimo",
+    "blockz",
+    "scss",
+    "css",
+    "sass"
+  ],
+  "main": "dist/styles.css",
+  "files": [
+    "dist",
+    "config",
+    "tailwind.config.js"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clear": "rm -rf dist",
+    "init": "mkdir -p dist",
+    "build:css": "sass -q src/index.scss dist/styles.css && postcss dist/styles.css --map --replace",
+    "build": "npm run clear && npm run init && npm run build:css",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No test specified\""
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.4",
+    "cssnano": "5.1.5",
+    "postcss": "8.4.12",
+    "postcss-cli": "9.1.0",
+    "sass": "1.49.10",
+    "tailwindcss": "3.0.23"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

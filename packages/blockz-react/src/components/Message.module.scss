@@ -1,0 +1,96 @@
+$border-width: 8px;
+$border-padding: calc(theme('spacing.3') + #{$border-width});
+$border-padding-small: calc(theme('spacing.4') + #{$border-width});
+
+.messageBorder{
+  @apply absolute z-1;
+}
+
+.message {
+  @apply relative bg-white overflow-hidden border rounded;
+
+  &State{
+    &Success{
+      .messageBorder{
+        @apply bg-turquoise-300;
+      }
+    }
+    &Caution{
+      .messageBorder{
+        @apply bg-red-300;
+      }
+    }
+    &Warning{
+      .messageBorder{
+        @apply bg-orange-300;
+      }
+    }
+    &Info{
+      .messageBorder{
+        @apply bg-blue-300;
+      }
+    }
+  }
+
+  &Position{
+    &Top{
+      @apply px-3 pb-3;
+      padding-top: $border-padding;
+
+      .messageBorder{
+        @apply top-0 left-0 right-0;
+        height: $border-width;
+      }
+    }
+    &Right{
+      @apply py-3 pl-3;
+      padding-right: $border-padding;
+
+      .messageBorder{
+        @apply top-0 right-0 bottom-0;
+        width: $border-width;
+      }
+    }
+    &Bottom{
+      @apply px-3 pt-3;
+      padding-bottom: $border-padding;
+
+      .messageBorder{
+        @apply right-0 bottom-0 left-0;
+        height: $border-width;
+      }
+    }
+    &Left{
+      @apply py-3 pr-3;
+      padding-left: $border-padding;
+
+      .messageBorder{
+        @apply bottom-0 left-0 top-0;
+        width: $border-width;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: theme('screens.small')){
+  .message {
+    &Position{
+      &Top{
+        @apply px-4 pb-4;
+        padding-top: $border-padding-small;
+      }
+      &Right{
+        @apply py-4 pl-4;
+        padding-right: $border-padding-small;
+      }
+      &Bottom{
+        @apply px-4 pt-4;
+        padding-bottom: $border-padding-small;
+      }
+      &Left{
+        @apply py-4 pr-4;
+        padding-left: $border-padding-small;
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+@keyframes tooltip-animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.childrenWrapper {
+  @apply inline-flex;
+}
+
+.tooltip {
+  @apply text-body-3 leading-body-3 font-400 py-2 px-3 rounded-small;
+  animation: tooltip-animation 150ms cubic-bezier(0, 0, 0.40, 1);
+  box-shadow: 0px 1px 3px 0px rgba(#000, 0.5);
+  max-width: 235px;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+
+  &StateIsOpen{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &Theme{
+    &Dark {
+      @apply bg-black text-white;
+    }
+
+    &Light {
+      @apply bg-white text-black;
+    }
+  }
+}
+
+.arrow {
+  @apply absolute;
+  width: 6px;
+  height: 6px;
+  border-style: solid;
+  border-width: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-top-color: transparent;
+
+  &Position{
+    &Top {
+      bottom: -6px;
+      border-width: 6px 6px 0 6px;
+    }
+
+    &Bottom {
+      top: -6px;
+      border-width: 0 6px 6px 6px;
+    }
+
+    &Left {
+      right: -6px;
+      border-width: 6px 0 6px 6px;
+    }
+
+    &Right {
+      left: -6px;
+      border-width: 6px 6px 6px 0;
+    }
+  }
+
+  &Theme{
+    &Dark {
+      &.arrowPosition{
+        &Top {
+          border-top-color: theme('colors.black.DEFAULT');
+        }
+
+        &Bottom {
+          border-bottom-color: theme('colors.black.DEFAULT');
+        }
+
+        &Left {
+          border-left-color: theme('colors.black.DEFAULT');
+        }
+
+        &Right {
+          border-right-color: theme('colors.black.DEFAULT');
+        }
+      }
+    }
+
+    &Light {
+      &.arrowPosition{
+        &Top {
+          border-top-color: theme('colors.white');
+        }
+
+        &Bottom {
+          border-bottom-color: theme('colors.white');
+        }
+
+        &Left {
+          border-left-color: theme('colors.white');
+        }
+
+        &Right {
+          border-right-color: theme('colors.white');
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.pill{
+  @apply rounded-circle inline-block font-700 overflow-hidden bg-gray-300 text-black-200;
+
+  &Size{
+    &Small{
+      @apply text-body-4 leading-body-4;
+      padding: 4px 10px;
+    }
+    &Medium{
+      @apply text-body-2 leading-body-2;
+      padding: 6px 12px;
+    }
+    &Large{
+      @apply text-body-1 leading-body-1;
+      padding: 8px 14px;
+    }
+  }
+
+  &Color{
+    &Pink {
+      @apply bg-pink-100 text-pink;
+    }
+    &Blue {
+      @apply bg-blue-100 text-blue;
+    }
+    &Turquoise {
+      @apply bg-turquoise-100 text-turquoise;
+    }
+    &Purple {
+      @apply bg-purple-100 text-purple;
+    }
+    &Green {
+      @apply bg-green-100 text-green;
+    }
+    &Red {
+      @apply bg-red-100 text-red;
+    }
+    &Orange {
+      @apply bg-orange-100 text-orange;
+    }
+    &Yellow {
+      @apply bg-yellow-100 text-yellow;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.bannerAlert {
+  @apply flex items-center justify-center p-3 text-black bg-gray-300 text-body-3 leading-body-3 font-700;
+
+  a {
+    @apply underline cursor-pointer;
+  }
+
+  &State{
+    &Success{
+      @apply bg-turquoise-100 text-turquoise;
+    }
+    &Info{
+      @apply bg-blue-100 text-blue;
+    }
+    &Warning{
+      @apply bg-orange-100 text-orange;
+    }
+    &Caution{
+      @apply bg-red-100 text-red;
+    }
+  }
+}
+
+.icon {
+  @apply mr-2;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: theme('screens.small')){
+  .bannerAlert{
+    @apply p-4 text-body-2 leading-body-2;
+  }
+}

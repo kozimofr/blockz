@@ -1,0 +1,44 @@
+.textArea {
+  @apply text-body-2 leading-body-2 w-full border rounded;
+  padding: 13px 16px;
+  vertical-align: middle;
+  resize: vertical;
+
+  ::-webkit-input-placeholder,
+  ::-moz-placeholder,
+  :-ms-input-placeholder {
+    @apply text-black-200;
+  }
+
+  &State{
+    &Default {
+      @apply border-gray text-black bg-white;
+
+      &:focus {
+        @apply text-black border-blue;
+      }
+    }
+
+    &Disabled {
+      @apply border-gray bg-gray-300 text-black-200;
+    }
+
+    &Error {
+      @apply border-red text-red bg-white;;
+
+      // This must be three separate rules, not a comma-separated list, to avoid the different
+      // vendor prefixes conflicting.
+      &::-webkit-input-placeholder {
+        @apply text-red;
+      }
+
+      &::-moz-placeholder {
+        @apply text-red;
+      }
+
+      &:-ms-input-placeholder {
+        @apply text-red;
+      }
+    }
+  }
+}

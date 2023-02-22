@@ -1,0 +1,12 @@
+.label{
+  @apply text-black text-body-2 leading-body-2 font-700;
+
+  &State {
+    &Disabled, &ReadOnly {
+      @apply text-black-200;
+    }
+    &Error {
+      @apply text-red;
+    }
+  }
+}

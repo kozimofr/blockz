@@ -1,0 +1,76 @@
+.avatar {
+  @apply relative font-800;
+
+  &Size{
+    &Xsmall {
+      @apply text-title-8 leading-title-8;
+
+      .square {
+        @apply rounded-xsmall;
+      }
+    }
+    &Small {
+      @apply text-title-5 leading-title-5;
+
+      .square {
+        @apply rounded-small;
+      }
+    }
+    &Medium {
+      @apply text-title-3 leading-title-3;
+
+      .square {
+        @apply rounded;
+      }
+    }
+    &Large {
+      @apply text-title-2 leading-title-2;
+
+      .square {
+        @apply rounded-large;
+      }
+    }
+    &Xlarge {
+      @apply text-title-1 leading-title-1;
+
+      .square {
+        @apply rounded-xlarge;
+      }
+    }
+  }
+
+  &Theme{
+    &1{
+      @apply text-pink bg-pink-100;
+    }
+    &2{
+      @apply text-blue bg-blue-100;
+    }
+    &3{
+      @apply text-turquoise bg-turquoise-100;
+    }
+    &4{
+      @apply text-purple bg-purple-100;
+    }
+    &5{
+      @apply text-green bg-green-100;
+    }
+    &6{
+      @apply text-red bg-red-100;
+    }
+    &7{
+      @apply text-orange bg-orange-100;
+    }
+    &8{
+      @apply text-yellow bg-yellow-100;
+    }
+  }
+}
+
+.initials {
+  @apply h-full w-full flex justify-around items-center font-800;
+}
+
+.circle {
+  @apply rounded-circle;
+}

@@ -1,0 +1,143 @@
+.radio {
+  @apply relative flex;
+
+  &VerticalAlignTop {
+    @apply items-start;
+  }
+
+  &VerticalAlignCenter {
+    @apply items-center;
+  }
+}
+
+.circleRadio{
+  @apply hidden;
+}
+
+.input {
+  @apply absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+
+  &:focus ~ .radioContainer {
+    box-shadow: 0 0 0px 4px theme('colors.gray.300');
+  }
+}
+
+.radioContainer {
+  @apply rounded-circle;
+  width: 24px;
+  height: 24px;
+
+  // Margin that makes the input appear decently aligned against
+  // various Thumbprint <Text> sizes
+  .radioVerticalAlignTop & {
+    margin-top: 1px;
+  }
+
+  .radioVerticalAlignCenter & {
+    margin-top: -1px;
+  }
+}
+
+.text {
+  @apply text-body-2 leading-body-2 font-400 pl-2;
+  // This must take up the remaining available space for content that must be right-aligned.
+  flex: 1 0 0%;
+  // 'min-width' is needed to allow text within the radio to truncate.
+  min-width: 0;
+  color: inherit;
+
+  &State{
+    &Error{
+      @apply text-red;
+    }
+  }
+}
+
+.input:not(:checked){
+  & ~ .radioContainer{
+    .circle{
+      &Background{
+        fill: theme('colors.white');
+      }
+      &Border{
+        stroke: theme('colors.gray.DEFAULT');
+      }
+      &Radio{
+        fill: transparent;
+      }
+    }
+
+    &State{
+      &Error{
+        .circle{
+          &Background{
+            fill: theme('colors.white');
+          }
+          &Border{
+            stroke: theme('colors.red.DEFAULT');
+          }
+          &Radio{
+            fill: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+.input:checked{
+  & ~ .radioContainer{
+    .circle{
+      &Background{
+        fill: theme('colors.white');
+      }
+      &Border{
+        stroke: theme('colors.blue.DEFAULT');
+      }
+      &Radio{
+        @apply block;
+        fill: theme('colors.blue.DEFAULT');
+      }
+    }
+
+    &State{
+      &Error{
+        .circle{
+          &Background{
+            fill: theme('colors.white');
+          }
+          &Border{
+            stroke: theme('colors.red.DEFAULT');
+          }
+          &Radio{
+            fill: theme('colors.red.DEFAULT');
+          }
+        }
+      }
+    }
+  }
+}
+
+.input:disabled{
+  & ~ .radioContainer{
+    .circle{
+      &Background{
+        fill: theme('colors.gray.300')!important;
+      }
+      &Border{
+        stroke: theme('colors.gray.DEFAULT')!important;
+      }
+      &Radio{
+        fill: theme('colors.black.200')!important;
+      }
+    }
+  }
+
+  & ~ .text {
+    color: theme('colors.black.200')!important;
+  }
+}

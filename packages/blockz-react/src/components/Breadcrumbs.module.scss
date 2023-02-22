@@ -1,0 +1,16 @@
+.breadcrumbs{
+  @apply pl-0 ml-0;
+
+  li{
+    &:not(:last-child){
+      @apply mr-1;
+    }
+    &:not(:first-child):before{
+      content: "//\A0";
+    }
+  }
+}
+
+.link{
+  @apply text-blue cursor-pointer;
+}

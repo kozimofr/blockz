@@ -1,0 +1,129 @@
+.switch {
+  @apply relative flex;
+
+  &VerticalAlignTop {
+    @apply items-start;
+  }
+
+  &VerticalAlignCenter {
+    @apply items-center;
+  }
+}
+
+.switchCheckedIcon{
+  @apply hidden;
+}
+
+.input {
+  @apply absolute;
+  opacity: 0;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+
+  &:focus ~ .switchContainer {
+    box-shadow: 0 0 0px 4px theme("colors.gray.300");
+  }
+}
+
+$switchHeight: 22px;
+
+.switchContainer {
+  @apply rounded-circle flex items-center justify-start flex-none border-2;
+  width: 40px;
+  height: $switchHeight;
+  box-sizing: content-box;
+
+  // Margin that makes the input appear decently aligned against
+  // various Thumbprint <Text> sizes
+  .switchVerticalAlignTop & {
+    margin-top: 1px;
+  }
+
+  &State{
+    &Error{
+      @apply bg-red border-red;
+    }
+  }
+}
+
+.switchCircle {
+  @apply rounded-circle flex items-center justify-center flex-none;
+  width: $switchHeight;
+  height: $switchHeight;
+}
+
+.text {
+  @apply text-body-2 leading-body-2 font-400 pl-2;
+  // This must take up the remaining available space for content that must be right-aligned.
+  flex: 1 0 0%;
+  // 'min-width' is needed to allow text within the toggle to truncate.
+  min-width: 0;
+  color: inherit;
+
+  &State{
+    &Error{
+      @apply text-red;
+    }
+  }
+}
+
+.input:not(:checked){
+  & ~ .switchContainer{
+    @apply bg-gray border-gray;
+
+    .switchCircle{
+      @apply text-gray bg-white;
+    }
+
+    &State{
+      &Error{
+        @apply bg-red border-red;
+
+        .switchCircle{
+          @apply text-red bg-white;
+        }
+      }
+    }
+  }
+}
+
+.input:checked{
+  & ~ .switchContainer{
+    @apply justify-end bg-blue border-blue;
+
+    .switchCircle{
+      @apply text-blue bg-white;
+
+      .switchCheckedIcon{
+        @apply block;
+      }
+    }
+
+    &State{
+      &Error{
+        @apply border-red bg-red;
+
+        .switchCircle{
+          @apply text-red bg-white;
+        }
+      }
+    }
+  }
+}
+
+.input:disabled{
+  & ~ .switchContainer{
+    background-color: theme('colors.gray.DEFAULT')!important;
+    border-color: theme('colors.gray.DEFAULT')!important;
+
+    .switchCircle{
+      color: theme('colors.gray.DEFAULT')!important;
+      background-color: theme('colors.black.200')!important;
+    }
+  }
+
+  & ~ .text{
+    color: theme('colors.black.200')!important;
+  }
+}

@@ -1,0 +1,21 @@
+.text{
+  &Position{
+    &Left{
+      @apply mr-1 text-yellow font-700;
+    }
+    &Right{
+      @apply ml-1 text-black font-700;
+    }
+  }
+  &Size{
+    &Small {
+      @apply text-body-4 leading-body-4;
+    }
+    &Medium {
+      @apply text-body-3 leading-body-3;
+    }
+    &Large {
+      @apply text-body-2 leading-body-2;
+    }
+  }
+}

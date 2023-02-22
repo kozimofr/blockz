@@ -1,0 +1,39 @@
+.title1, .title2, .title3, .title4, .title5, .title6, .title7, .title8{
+  @apply text-black font-800;
+}
+.title1{
+  @apply text-title-1m leading-title-1m;
+}
+.title2{
+  @apply text-title-2m leading-title-2m;
+}
+.title3{
+  @apply text-title-3m leading-title-3m;
+}
+.title4{
+  @apply text-title-4 leading-title-4;
+}
+.title5{
+  @apply text-title-5 leading-title-5;
+}
+.title6{
+  @apply text-title-6 leading-title-6;
+}
+.title7{
+  @apply text-title-7 leading-title-7;
+}
+.title8{
+  @apply text-title-8 leading-title-8;
+}
+
+@media screen and (min-width: theme("screens.medium")){
+  .title1{
+    @apply text-title-1 leading-title-1;
+  }
+  .title2{
+    @apply text-title-2 leading-title-2;
+  }
+  .title3{
+    @apply text-title-3 leading-title-3;
+  }
+}

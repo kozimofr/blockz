@@ -1,0 +1,18 @@
+.picture {
+  @apply block w-full overflow-hidden;
+
+  height: inherit;
+}
+
+.image{
+  height: inherit;
+
+  &Start {
+    @apply block w-full;
+    opacity: 0;
+  }
+
+  &End {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,79 @@
+.select {
+  @apply border;
+  // Vendor prefixes are needed to work around a bug in Gatsby, the framework that powers our
+  // documentation site, so that the component doesn't appear broken on our documentation.
+  // https://github.com/thumbtack/thumbprint-archive/issues/899
+  // https://github.com/gatsbyjs/gatsby/issues/1347
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  outline: none;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: auto 18px;
+  padding-left: 14px;
+  padding-right: 54px;
+  width: 100%;
+
+  &:focus {
+    @apply border-blue;
+  }
+
+  &::-ms-expand {
+    @apply hidden;
+  }
+
+  &:-moz-focusring {
+    @apply text-transparent;
+    text-shadow: 0 0 0 theme('colors.black.DEFAULT');
+  }
+
+  &State {
+    &Disabled {
+      @apply bg-gray-300 border-gray text-black-200;
+    }
+
+    &Error {
+      @apply bg-white border-red text-red;
+
+      &:focus {
+        @apply border-red;
+      }
+    }
+
+    &Default {
+      @apply bg-white border-gray text-black;
+    }
+  }
+
+  &Size {
+    &Large {
+      @apply text-body-2 leading-body-2 rounded;
+      height: 52px;
+    }
+
+    &Small {
+      @apply text-body-3 leading-body-3 rounded-small;
+      height: 40px;
+    }
+  }
+}
+
+.caret {
+  @apply absolute top-0 bottom-0 mt-auto mb-auto;
+  right: 16px;
+  pointer-events: none;
+
+  &State{
+    &Default{
+      stroke: theme("colors.black.DEFAULT");
+    }
+    &Disabled{
+      stroke: theme("colors.black.200");
+    }
+    &Error{
+      stroke: theme("colors.red.DEFAULT");
+    }
+  }
+}

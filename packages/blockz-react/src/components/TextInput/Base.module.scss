@@ -1,0 +1,196 @@
+$border-width: 1px;
+$inner-radius-large: calc(theme('borderRadius.DEFAULT') - #{$border-width});
+$inner-radius-small: calc(theme('borderRadius.small') - #{$border-width});
+
+.inputContainer{
+  @apply relative w-full inline-flex;
+  padding: $border-width;
+  // Prevents the z-indices used within this component from bubbling up and affecting the rest of
+  // the page. https://github.com/thumbtack/thumbprint-archive/issues/954
+  z-index: 0;
+}
+
+.innerLeft, .innerRight{
+  @apply relative overflow-hidden flex;
+  z-index: 2;
+}
+
+.innerLeft{
+  &Size {
+    &Large {
+      border-top-left-radius: $inner-radius-large;
+      border-bottom-left-radius: $inner-radius-large;
+    }
+    &Small {
+      border-top-left-radius: $inner-radius-small;
+      border-bottom-left-radius: $inner-radius-small;
+    }
+  }
+}
+
+.innerRight{
+  &Size {
+    &Large {
+      border-top-right-radius: $inner-radius-large;
+      border-bottom-right-radius: $inner-radius-large;
+    }
+    &Small {
+      border-top-right-radius: $inner-radius-small;
+      border-bottom-right-radius: $inner-radius-small;
+    }
+  }
+}
+
+.icon {
+  @apply flex items-center h-full cursor-text;
+
+  &Position {
+    &Left {
+      @apply pl-3;
+    }
+  }
+  &Position {
+    &Right {
+      @apply pr-3;
+    }
+  }
+}
+
+.inputStyles {
+  @apply absolute top-0 right-0 bottom-0 left-0;
+  z-index: 1;
+  border: $border-width solid;
+
+  &Size {
+    &Large {
+      @apply rounded;
+    }
+    &Small {
+      @apply rounded-small;
+    }
+  }
+}
+
+// The '.input.input.input' element is used to increase specificity so that the selector takes
+// precedence over a highly specific selector in Thumbtack's website.
+// https://github.com/thumbtack/thumbprint-archive/issues/244
+.input {
+  @apply h-auto bg-transparent relative w-full;
+  border: none;
+  flex: 1 0 0%;
+  // Input elements, by default, have a 20 character min-width due to the `size` attribute.
+  // Adding `min-width: 0` allows the input to shrink below the 20 character width when needed.
+  // This only affects Firefox and Edge, normalizing the behavior across browsers.
+  min-width: 0;
+  color: inherit;
+  vertical-align: middle;
+  z-index: 2;
+
+  &:focus {
+    @apply text-black;
+    // Focus styles are added to another element, not the actual input element.
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder {
+    @apply text-black-200;
+  }
+
+  // Remove browser default "clear" button since it should be added with "InputClearButton".
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    @apply hidden;
+  }
+
+  // Remove browser default "clear" button for IE 11. This rule needs to be separated as
+  // it fails to apply if grouped with the above `::-webkit` selectors.
+  &::-ms-clear {
+    @apply hidden;
+  }
+
+  &Size {
+    &Large {
+      @apply text-body-2 leading-body-2 rounded;
+      padding: 13px 16px;
+    }
+    &Small {
+      @apply text-body-3 leading-body-3 rounded-small;
+      padding: 9px 16px;
+    }
+  }
+
+  // These two padding values prevent an overlap of the `innerLeft`/`innerRight` icon and the
+  // input itself which can happen when the autofill functionality adds a backgroun-color to
+  // the input.
+  &.inputWithIconLeft {
+    @apply pl-2;
+  }
+}
+
+.textInput {
+  &State {
+    &Default {
+      @apply text-black;
+
+      .inputStyles {
+        @apply bg-white border-gray;
+      }
+    }
+
+    &Disabled, &ReadOnly {
+      @apply text-black-200;
+
+      .inputStyles {
+        @apply bg-gray-300 border-gray;
+      }
+
+      .input:focus{
+        @apply text-black-200;
+      }
+    }
+
+    &Error {
+      @apply text-red;
+
+      .inputStyles {
+        @apply bg-white border-red;
+      }
+
+      .input{
+        // This must be three separate rules, not a comma-separated list, to avoid the different
+        // vendor prefixes conflicting.
+        &::-webkit-input-placeholder {
+          @apply text-red;
+        }
+
+        &::-moz-placeholder {
+          @apply text-red;
+        }
+
+        &:-ms-input-placeholder {
+          @apply text-red;
+        }
+      }
+    }
+
+    &Default{
+      .input:focus {
+        & ~ .inputStyles {
+          @apply border-blue;
+        }
+      }
+    }
+
+    &ReadOnly, &Disabled {
+      .input, .icon{
+        @apply cursor-not-allowed;
+      }
+    }
+  }
+}

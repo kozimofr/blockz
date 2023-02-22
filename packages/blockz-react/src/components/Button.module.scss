@@ -1,0 +1,218 @@
+$button-height-large: 52px;
+$button-height-small: 40px;
+$button-border-width: 2px;
+
+.loaderContainer {
+  @apply flex items-center justify-center;
+}
+
+.absoluteCenter {
+  @apply absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.iconContainer {
+  @apply flex items-center overflow-hidden;
+  height: 24px;
+
+  &HasRightChildren {
+    @apply mr-2;
+  }
+  &HasLeftChildren {
+    @apply ml-2;
+  }
+}
+
+.flexWrapper {
+  // This wraps the content since `button`s are not able to use `display: flex`.
+  @apply flex items-center justify-center;
+
+  &Size{
+    &Large {
+      @apply text-body-2 leading-body-2;
+      min-height: $button-height-large - ($button-border-width * 2);
+    }
+    &Small {
+      @apply text-body-3 leading-body-3;
+      min-height: $button-height-small - ($button-border-width * 2);
+    }
+  }
+
+  &::after {
+    // Fix bug in IE 11 with `align-items: center` and `min-height`.
+    // https://github.com/philipwalton/flexbugs/issues/231
+    content: '';
+    display: block;
+    min-height: inherit;
+    font-size: 0;
+  }
+}
+
+.button {
+  @apply relative inline-block font-700;
+  box-sizing: border-box;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-family: inherit;
+  border-width: $button-border-width;
+  border-style: solid;
+  user-select: none;
+  position: relative;
+  overflow: visible;
+
+  &HasNoRightBorder {
+    border-right: none;
+  }
+
+  &SizeLarge{
+    @apply rounded;
+    padding: 0 22px;
+  }
+
+  &SizeSmall{
+    @apply rounded-small;
+    padding: 0 16px;
+  }
+
+  &ThemePrimarySolid {
+    @apply text-white bg-pink border-pink;
+
+    &[disabled] {
+      @apply bg-pink-200 border-pink-200;
+    }
+
+    &:focus {
+      @apply bg-pink-500 border-pink-500;
+    }
+  }
+
+  &ThemeSecondarySolid {
+    @apply text-white bg-blue border-blue;
+
+    &[disabled] {
+      @apply bg-blue-200 border-blue-200;
+    }
+
+    &:focus {
+      @apply bg-blue-500 border-blue-500;
+    }
+  }
+
+  &ThemeTertiarySolid {
+    @apply text-white bg-black border-black;
+
+    &[disabled] {
+      @apply bg-black-200 border-black-200;
+    }
+
+    &:focus {
+      @apply bg-black border-black;
+    }
+  }
+
+  &ThemeCautionSolid {
+    @apply text-white bg-red border-red;
+
+    &[disabled] {
+      @apply bg-red-200 border-red-200;
+    }
+
+    &:focus {
+      @apply bg-red-500 border-red-500;
+    }
+  }
+
+  &ThemePrimaryOutline {
+    @apply text-pink bg-white border-gray;
+
+    &[disabled] {
+      @apply text-pink-200;
+    }
+
+    &:focus {
+      @apply border-pink;
+    }
+  }
+
+  &ThemeSecondaryOutline {
+    @apply text-blue bg-white border-gray;
+
+    &[disabled] {
+      @apply text-blue-200;
+    }
+
+    &:focus {
+      @apply border-blue;
+    }
+  }
+
+  &ThemeTertiaryOutline {
+    @apply text-black bg-white border-gray;
+
+    &[disabled] {
+      @apply text-black-200;
+    }
+
+    &:focus {
+      @apply border-black;
+    }
+  }
+
+  &ThemeCautionOutline {
+    @apply text-red bg-white border-gray;
+
+    &[disabled] {
+      @apply text-red-200;
+    }
+
+    &:focus {
+      @apply border-red;
+    }
+  }
+
+  &ThemePrimaryInverse {
+    @apply text-pink bg-white border-white;
+
+    &[disabled] {
+      @apply text-pink-200;
+    }
+  }
+
+  &ThemeSecondaryInverse {
+    @apply text-blue bg-white border-white;
+
+    &[disabled] {
+      @apply text-blue-200;
+    }
+  }
+
+  &ThemeTertiaryInverse {
+    @apply text-black bg-white border-white;
+
+    &[disabled] {
+      @apply text-black-200;
+    }
+  }
+
+  &ThemeCautionInverse {
+    @apply text-red bg-white border-white;
+
+    &[disabled] {
+      @apply text-red-200;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not([disabled]) {
+    @apply cursor-pointer;
+  }
+
+  &[disabled] {
+    @apply cursor-default;
+  }
+}

@@ -1,0 +1,20 @@
+# general
+.DS_Store
+node_modules
+package-lock.json
+yarn.lock
+yarn-error.log
+tsconfig.tsbuildinfo
+
+# blockz-icons
+packages/blockz-icons/src
+packages/blockz-icons/dist
+
+# blockz-react
+packages/blockz-react/dist
+
+# blockz-scss
+packages/blockz-scss/dist
+
+# www
+www/.next
