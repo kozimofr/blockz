@@ -10,7 +10,7 @@
   "dependencies": {
     "@kozimo/blockz-icons": "1.0.0",
     "@kozimo/blockz-react": "1.0.0",
-    "@kozimo/blockz-scss": "1.0.1",
+    "@kozimo/blockz-scss": "1.0.2",
     "@popperjs/core": "2.11.4",
     "classnames": "2.3.1",
     "html-react-parser": "1.4.10",

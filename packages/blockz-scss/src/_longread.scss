@@ -148,17 +148,6 @@
   }
 }
 
-@media screen and (min-width: theme('screens.small')){
-  .longread{
-    ul,
-    ol {
-      > li {
-        padding-left: 12px;
-      }
-    }
-  }
-}
-
 @media screen and (min-width: theme('screens.medium')){
   .longread{
     h1 {
