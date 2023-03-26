@@ -13,5 +13,5 @@ link:
 	npm i
 	make share_package package="blockz-react"
 	make share_dependency package="blockz-react" dependency="react"
-	# make create_link package="blockz-icons"
-	# make create_link package="blockz-scss"
+	# make share_package package="blockz-icons"
+	# make share_package package="blockz-scss"

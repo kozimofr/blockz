@@ -1,6 +1,6 @@
 {
   "name": "@kozimo/blockz-scss",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SCSS files for building Kozimo UI.",
   "homepage": "https://github.com/kozimofr/blockz/tree/master/packages/blockz-scss",
   "repository": {
