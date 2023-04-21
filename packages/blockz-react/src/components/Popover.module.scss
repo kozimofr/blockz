@@ -15,10 +15,10 @@ $border-width: 8px;
 
   &Width{
     &Small{
-      max-width: 300px;
+      width: 300px;
     }
     &Large{
-      max-width: 470px;
+      width: 470px;
     }
   }
 }

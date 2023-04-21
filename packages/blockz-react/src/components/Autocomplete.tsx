@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, useRef } from "react"
+import React, { ReactNode, useState, useCallback } from "react"
 import Autosuggest from 'react-autosuggest';
 import classNames from "classnames"
 import has from "lodash/has"
@@ -124,13 +124,13 @@ export default React.forwardRef<HTMLInputElement, AutocompletePropsType>(
     }: AutocompletePropsType,
     outerRef
   ): JSX.Element {
-    const onFetchRequestedDebounce = useRef<any>(debounce((value: string): void => {
+    const onFetchRequestedDebounce = useCallback<any>(debounce((value: string): void => {
       if(value !== ""){
         onFetchRequested(value)
       }else{
         onClearRequested()
       }
-    }, fetchDelay))
+    }, fetchDelay), [onFetchRequested, onClearRequested])
 
     const [search, setSearch] = useState(defaultSuggestion ? defaultSuggestion.label : "")
     const [value, setValue] = useState<string>(defaultSuggestion ? defaultSuggestion.value : "")
@@ -144,7 +144,7 @@ export default React.forwardRef<HTMLInputElement, AutocompletePropsType>(
     }
 
     const handleFetchRequested = ({ value }: HandleFetchRequestedType) => {
-      onFetchRequestedDebounce.current(value)
+      onFetchRequestedDebounce(value)
     }
 
     const handleSelectSuggestion = (_: any, { suggestion }: HandleSelectType) => {

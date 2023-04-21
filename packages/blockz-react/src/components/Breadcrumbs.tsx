@@ -12,16 +12,12 @@ import styles from "./Breadcrumbs.module.scss"
 
 export interface BreadcrumbType {
   name: string;
-  path: string;
+  path?: string;
   onClick?: () => void;
 }
 
 export interface BreadcrumbsPropsType {
-  breadcrumbs: (
-    Omit<BreadcrumbType, 'path'> & {
-      path?: string;
-    }
-  )[];
+  breadcrumbs: BreadcrumbType[];
   size?: TextPropsType['size'];
   className?: string;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
